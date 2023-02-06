@@ -10,6 +10,6 @@ public class Lists extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lists);
-        System.out.println("Hola");
+        System.out.println("Hola1");
     }
 }
