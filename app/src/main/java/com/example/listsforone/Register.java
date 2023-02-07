@@ -3,8 +3,12 @@ package com.example.listsforone;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.ColorMatrix;
+import android.graphics.ColorMatrixColorFilter;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -28,6 +32,24 @@ public class Register extends AppCompatActivity {
 
         if (contenido_UserRe.isEmpty() || contenido_passwordRe.isEmpty()) {
             Toast.makeText(this, "El campo user y el campo contraseña esta vacio", Toast.LENGTH_SHORT).show();
+
+            Animation shake = AnimationUtils.loadAnimation(Register.this, R.anim.shake);
+
+            float red = 1.2f;
+            float green = 1.0f;
+            float blue = 1.0f;
+            float alpha = 1.0f;
+
+            ColorMatrix matrix = new ColorMatrix();
+            matrix.setScale(red, green, blue, alpha);
+            ColorMatrixColorFilter filter = new ColorMatrixColorFilter(matrix);
+            // user.setBackgroundColor(Color.RED);
+            userRe.getBackground().setColorFilter(filter);
+            passwordRe.getBackground().setColorFilter(filter);
+
+            userRe.startAnimation(shake);
+            passwordRe.startAnimation(shake);
+
         } else if (contenido_passwordRe.length() < 7){
             Toast.makeText(this, "La contraseña introducida es menor a 7 caracteres. Minimo 7 caracteres.", Toast.LENGTH_SHORT).show();
         } else {
